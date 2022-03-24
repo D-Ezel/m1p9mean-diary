@@ -17,8 +17,10 @@ app.use(bodyParser.json());
 var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
+const port = process.env.PORT || 8888;
+
 // Init the server
-var server = app.listen(process.env.PORT || 8888, function () {
+var server = app.listen(port, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
 });
