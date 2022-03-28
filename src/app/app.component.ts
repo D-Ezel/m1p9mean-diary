@@ -8,15 +8,16 @@ import { StatusService } from './services/status.service';
 })
 export class AppComponent implements OnInit{
   title = 'node-express-angular';
-  status = 'DOWN';
+  reviewer = 'DOWN';
 
   constructor(private statusService: StatusService) { }
 
   ngOnInit() {
     this.statusService
-      .getStatus()
+      .getListingsAndReviews()
       .subscribe((result: any) => {
-        this.status = result.status;
+        console.log(result);
+        this.reviewer = result.listingsReviews[0].username;
       });
   }
 }

@@ -5,13 +5,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class StatusService {
-  private statusUrl = '/api/status';
+  private listingsUrl = '/api/listingsAndReviews';
 
   constructor(private http: HttpClient) { }
 
   // Get the status
-  public getStatus() {
-    return this.http.get(this.statusUrl);
+  public getListingsAndReviews() {
+    return this.http.get(this.listingsUrl);
   }
 
   // Error handling

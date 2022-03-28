@@ -2,6 +2,7 @@
 var express = require("express");
 // Use body-parser
 var bodyParser = require("body-parser");
+const MongoClient = require('mongodb').MongoClient
 
 // Create new instance of the express server
 var app = express();
@@ -20,25 +21,44 @@ app.get("/api/status", function (req, res) {
     res.status(200).json({ status: "UP" });
 });
 
-if(process.env.NODE_ENV === "production") {
+const connectionString = "mongodb+srv://e-kaly:e-kalyMEAN@cluster0.wa4xc.mongodb.net";
 
-    var distDir = __dirname + "/dist/e-kaly";
-    app.use(express.static(distDir));
+MongoClient.connect(connectionString, { useUnifiedTopology: true })
+    .then(client => {
+			console.log('Connected to Database')
+			const db = client.db('sample_analytics')
+			app.get("/api/listingsAndReviews", function (req, res) {
+				db.collection('customers').find().toArray()
+					.then(rsListingsAndReviews => {
+						console.log(rsListingsAndReviews)
+						res.status(200).json({ listingsReviews: rsListingsAndReviews })
+					})
+					.catch(/* ... */)
+			});
 
-    app.get("*", function(req, res) {
-        res.sendFile(path.join(distDir, "index.html"))
-    })
-}
+			const port = process.env.PORT || 8888;
+
+			if(process.env.NODE_ENV === "production") {
+
+				var distDir = __dirname + "/dist/e-kaly";
+				app.use(express.static(distDir));
+		
+				app.get("*", function(req, res) {
+						res.sendFile(path.join(distDir, "index.html"))
+				})
+			}
+
+			// Init the server
+			var server = app.listen(port, function () {
+			var port = server.address().port;
+				console.log("App now running on port", port);
+			});
+
+		})
+    .catch(console.error)
+
 
 // Create link to Angular build directory
 // The `ng build` command will save the result
 // under the `dist` folder.
-
-const port = process.env.PORT || 8888;
-
-// Init the server
-var server = app.listen(port, function () {
-    var port = server.address().port;
-    console.log("App now running on port", port);
-});
 
