@@ -1,0 +1,77 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+$prefix:'-moz-', '-webkit-', '-o-', '-ms-', '';
+
+$extra-small: 320px;
+$small: 545px;
+$medium: 832px;
+$large: 1088px;
+$extra-large: 1272px;
+$extra-extra-large: 1504px;
+
+// These are the correct mixins! 
+// If base values change then we can easily update.
+// Viewport has been added to match these measurements.
+
+@mixin extraSmall {
+  @media (min-width: 0) and (max-width: #{$small - 1px}) {
+    @content;
+  }
+}
+@mixin small {
+  @media (min-width: #{$small}) and (max-width: #{$medium - 1px}) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (min-width: #{$medium}) and (max-width: #{$large - 1px}) {
+    @content;
+  }
+}
+@mixin large {
+  @media (min-width: #{$large}) and (max-width: #{$extra-large - 1px}) {
+    @content;
+  }
+}
+@mixin extraLarge {
+  @media (min-width: #{$extra-large}) and (max-width: #{$extra-extra-large - 1px}) {
+    @content;
+  }
+}
+@mixin extraExtraLarge {
+  @media (min-width: #{$extra-extra-large}) {
+    @content;
+  }
+}
+
+
+@mixin media($keys...) {
+  @each $key in $keys {
+    @if ($key == extraSmall) {
+      @include extraSmall {
+        @content;
+      }
+    } @else if ($key == small) {
+      @include small {
+        @content;
+      }
+    } @else if ($key == medium) {
+      @include medium {
+        @content;
+      }
+    } @else if ($key == large) {
+      @include large {
+        @content;
+      }
+    } @else if ($key == extraLarge) {
+      @include extraLarge {
+        @content;
+      }
+    } @else if ($key == extraExtraLarge) {
+      @include extraExtraLarge {
+        @content;
+      }
+    }
+  }
+}

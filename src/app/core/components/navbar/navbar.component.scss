@@ -1,0 +1,53 @@
+@import "../../../styles/global.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+
+.navbar {
+	padding:0 10%;
+	background-color: $beige;
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&__logo{
+		width:90px;
+	}
+
+	&__menu {
+		display:flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&__text {
+			ul {
+				list-style-type: none;
+				padding:0;
+				margin:0;
+				li {
+					margin-left:25px;
+					float:left;
+					color:$purple;
+					font-family: $base-font-family;
+					font-size: $base-font-size;
+					font-weight: 500;
+				}
+			}
+
+			@include media(extraSmall) {
+				ul {
+					
+				}
+			}
+		}
+
+		&__hamburger {
+			margin-left:30px;
+			padding-top: 5px;
+
+			.mat-icon {
+				color:$purple;
+			}
+		}
+	}
+}
+
