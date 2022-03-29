@@ -5,6 +5,7 @@ $prefix:'-moz-', '-webkit-', '-o-', '-ms-', '';
 
 $extra-small: 320px;
 $small: 545px;
+$semi-medium: 768px;
 $medium: 832px;
 $large: 1088px;
 $extra-large: 1272px;
@@ -19,11 +20,25 @@ $extra-extra-large: 1504px;
     @content;
   }
 }
-@mixin small {
+
+@mixin extraSmallToSemiMedium {
+  @media (min-width: 0) and (max-width: #{$semi-medium - 1px}) {
+    @content;
+  }
+}
+
+@mixin smallToMedium {
   @media (min-width: #{$small}) and (max-width: #{$medium - 1px}) {
     @content;
   }
 }
+
+@mixin semiMedium {
+  @media (min-width: #{$small}) and (max-width: #{$semi-medium - 1px}) {
+    @content;
+  }
+}
+
 @mixin medium {
   @media (min-width: #{$medium}) and (max-width: #{$large - 1px}) {
     @content;
@@ -52,8 +67,12 @@ $extra-extra-large: 1504px;
       @include extraSmall {
         @content;
       }
-    } @else if ($key == small) {
-      @include small {
+    } @else if ($key == extraSmallToSemiMedium) {
+      @include extraSmallToSemiMedium {
+        @content;
+      }
+    } @else if ($key == smallToMedium) {
+      @include smallToMedium {
         @content;
       }
     } @else if ($key == medium) {

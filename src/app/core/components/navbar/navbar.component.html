@@ -2,15 +2,32 @@
 	<div class="navbar__logo">
 		<img src="../../../../assets/images/logo/eKaly.png" alt="logo e-kaly" width="100%"/>
 	</div>
-	<div class="navbar__menu">
+	<nav class="navbar__menu">
 		<div class="navbar__menu__text">
-			<ul>
-				<li>Se connecter</li>
-				<li>S'inscrire</li>
+			<ul class="menu-container">
+				<li class="menu-item"><a href="#" class="text-style">À propos</a></li>
+				<li class="menu-item"><a href="#" class="text-style">Services</a></li>
+				<li class="menu-item"><a href="#" class="text-style">Livraison</a></li>
+				<li class="menu-item"><a href="#" class="text-style">Se connecter</a></li>
+				<li class="menu-item"><a href="#" class="text-style">S'inscrire</a></li>
 			</ul>
 		</div>
 		<div class="navbar__menu__hamburger">
-			<mat-icon>apps</mat-icon>
+			<label for="side-menu">
+				<mat-icon>apps</mat-icon>
+				<input class="side-menu" type="checkbox" id="side-menu"/>
+				<div class="--mobile__hamburger-menu">
+					<ul class="menu-container">
+						<li class="menu-item"><a href="#" class="text-style">Se connecter</a></li>
+						<li class="menu-item"><a href="#" class="text-style">S'inscrire</a></li>
+					</ul>
+					<ul>
+						<li class="menu-item__mobile"><a href="#" class="text-style">À propos</a></li>
+						<li class="menu-item__mobile"><a href="#" class="text-style">Services</a></li>
+						<li class="menu-item__mobile"><a href="#" class="text-style">Livraison</a></li>
+					</ul>
+				</div>
+			</label>
 		</div>
-	</div>
+	</nav>
 </div>
