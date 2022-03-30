@@ -1,18 +1,10 @@
-// Use Express
-
-
 import express from "express";
 import path from "path";
 import {fileURLToPath} from "url";
 import bodyParser from "body-parser";
 import MongoDb from "mongodb";
+import {connectionString, name} from "./Server side/db.js";
 
-//var express = require("express");
-//var path = require('path');
-//var fileURLToPath = require('url');
-
-// Use body-parser
-//var bodyParser = require("body-parser");
 const MongoClient = MongoDb.MongoClient
 
 // Create new instance of the express server
@@ -24,21 +16,15 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
-/*  "/api/status"
- *   GET: Get server status
- *   PS: it's just an example, not mandatory
- */
 app.get("/api/status", function (req, res) {
 	console.log("yes")
     res.status(200).json({ status: "UP" });
 });
 
-const connectionString = "mongodb+srv://e-kaly:e-kalyMEAN@cluster0.wa4xc.mongodb.net";
-
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
 	.then(client => {
 		console.log('Connected to Database')
-		const db = client.db('sample_analytics')
+		const db = client.db(name)
 		app.get("/api/listingsAndReviews", function (req, res) {
 			db.collection('customers').find().toArray()
 				.then(rsListingsAndReviews => {
@@ -69,12 +55,4 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 		});
 	})
 	.catch(console.error)
-
-	
-
-
-
-// Create link to Angular build directory
-// The `ng build` command will save the result
-// under the `dist` folder.
 
