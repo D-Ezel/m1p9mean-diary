@@ -1,10 +1,19 @@
 // Use Express
 
-var path = require('path');
-var express = require("express");
+
+import express from "express";
+import path from "path";
+import {fileURLToPath} from "url";
+import bodyParser from "body-parser";
+import MongoDb from "mongodb";
+
+//var express = require("express");
+//var path = require('path');
+//var fileURLToPath = require('url');
+
 // Use body-parser
-var bodyParser = require("body-parser");
-const MongoClient = require('mongodb').MongoClient
+//var bodyParser = require("body-parser");
+const MongoClient = MongoDb.MongoClient
 
 // Create new instance of the express server
 var app = express();
@@ -43,8 +52,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 	}).then(() => {
 		const port = process.env.PORT || 8888;
 		if(process.env.NODE_ENV === "production") {
-			console.log("d aona")
-			var distDir = __dirname + "/dist/e-kaly";
+			const filename = fileURLToPath(import.meta.url);
+			const __dirname = path.dirname(filename);
+
+			const distDir = __dirname + "/dist/e-kaly";
 			app.use(express.static(distDir));
 			
 			app.get("*", function(req, res) {
