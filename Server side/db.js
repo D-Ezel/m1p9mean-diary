@@ -1,7 +1,7 @@
 //const mongoose = require('mongoose');
 import config from './config.js'
 
-const { db: { host, username, pwd, name } } = config;
-const connectionString = `mongodb+srv://${username}:${pwd}@${host}`;
+const { db: { cluster, username, pwd, dbname } } = config;
+const connectionString = `mongodb+srv://${username}:${pwd}@${cluster}/${dbname}?retryWrites=true&w=majority`;
 
-export {connectionString, name};
+export default connectionString;

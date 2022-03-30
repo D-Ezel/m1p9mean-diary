@@ -1,5 +1,5 @@
 {
-  "type":"module",
+  "type": "module",
   "name": "e-kaly",
   "version": "0.0.0",
   "scripts": {
@@ -29,6 +29,7 @@
     "concurrently": "^7.0.0",
     "express": "^4.17.3",
     "mongodb": "^4.4.1",
+    "mongoose": "^6.2.9",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

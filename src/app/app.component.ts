@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
       .getListingsAndReviews()
       .subscribe((result: any) => {
         console.log(result);
-        this.reviewer = result.listingsReviews[0].username;
+        this.reviewer = result[0].username;
       });
   }
 }

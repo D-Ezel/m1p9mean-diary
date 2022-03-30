@@ -3,10 +3,10 @@ const config = {
 		port: 8888
 	},
 	db: {
-		host: 'cluster0.wa4xc.mongodb.net',
+		cluster: 'cluster0.wa4xc.mongodb.net',
 		username: "e-kaly",
 		pwd:"e-kalyMEAN",
-		name: 'sample_analytics'
+		dbname: 'sample_analytics'
 	}
 };
 	
