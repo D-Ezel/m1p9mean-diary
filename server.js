@@ -1,4 +1,6 @@
 // Use Express
+
+var path = require('path');
 var express = require("express");
 // Use body-parser
 var bodyParser = require("body-parser");
