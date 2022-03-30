@@ -18,6 +18,7 @@ app.use(bodyParser.json());
  *   PS: it's just an example, not mandatory
  */
 app.get("/api/status", function (req, res) {
+	console.log("yes")
     res.status(200).json({ status: "UP" });
 });
 
@@ -30,32 +31,34 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 		app.get("/api/listingsAndReviews", function (req, res) {
 			db.collection('customers').find().toArray()
 				.then(rsListingsAndReviews => {
-					console.log(rsListingsAndReviews)
+					console.log(rsListingsAndReviews[0])
 					res.status(200).json({ listingsReviews: rsListingsAndReviews })
 				})
 				.catch(/* ... */)
-		});
-
+		})
+		
+		
+	}).then(() => {
 		const port = process.env.PORT || 8888;
-
 		if(process.env.NODE_ENV === "production") {
-
+			console.log("d aona")
 			var distDir = __dirname + "/dist/e-kaly";
 			app.use(express.static(distDir));
-	
+			
 			app.get("*", function(req, res) {
-					res.sendFile(path.join(distDir, "index.html"))
+				res.sendFile(path.join(distDir, "index.html"))
 			})
 		}
-
 		// Init the server
 		var server = app.listen(port, function () {
 		var port = server.address().port;
 			console.log("App now running on port", port);
 		});
-
 	})
 	.catch(console.error)
+
+	
+
 
 
 // Create link to Angular build directory
