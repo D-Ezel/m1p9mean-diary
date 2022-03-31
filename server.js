@@ -1,13 +1,13 @@
 import express from "express";
+
 import path from "path";
 import {fileURLToPath} from "url";
 import bodyParser from "body-parser";
-//import MongoDb from "mongodb";
+
 import mongoose from "mongoose";
 import connectionString from "./Server side/db.js";
-import Router from "./Server side/routes.js";
 
-//const MongoClient = MongoDb.MongoClient
+import Router from "./Server side/routes.js";
 
 // Create new instance of the express server
 const app = express();

@@ -5,16 +5,18 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [NavbarComponent, PageNotFoundComponent],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   exports: [
     NavbarComponent,
-  ]
+  ],
+  providers:[{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
 })
 export class CoreModule { }

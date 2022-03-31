@@ -12,8 +12,6 @@ import { HomeModule } from './home/home.module';
 import { AccountModule } from './account/account.module';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent

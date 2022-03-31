@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './home.component';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HomeComponent } from './home.component';
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CoreModule
   ],
   exports: [
     HeaderComponent,
