@@ -15,8 +15,14 @@ export class NavbarComponent implements OnInit {
   }
 
   openDialogLogin() {
-    const dialogRef = this.dialog.open(LoginComponent,{height: 'auto',
-    width: 'auto'});
+    const dialogRef = this.dialog.open(
+    LoginComponent,
+    {
+      height: '70%',
+      width: '500px', 
+      panelClass: 'custom-dialog',
+      backdropClass: 'custom-backDrop'
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

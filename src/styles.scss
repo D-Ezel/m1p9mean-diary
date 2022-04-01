@@ -2,8 +2,12 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
+//@import "./app/styles/colors.scss";
 // Plus imports for other components in your app.
-
+:root {
+  --custom-color-transparent: transparent;
+  --custom-color-backDrop: #fff5ed;
+}
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -37,3 +41,13 @@ $e-kaly-theme: mat-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom-dialog > mat-dialog-container {
+	background: var(--custom-color-transparent);
+}
+
+.custom-backDrop {
+  filter: blur(20px);
+  //background: currentColor;
+  opacity:0.1 !important;
+}

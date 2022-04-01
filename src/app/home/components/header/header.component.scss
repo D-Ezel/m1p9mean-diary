@@ -15,6 +15,12 @@
 	&__welcome {
 		display:flex;
 		flex-direction: column;
+		position:absolute;
+		left:10%;
+	
+		@include media(extraSmallToMedium) {
+			position:static;
+		}
 
 		h6 {
 			font-family: $base-font-family;
@@ -80,7 +86,7 @@
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
-		width:40%;
+		width:75%;
 		height:100%;
 
 		@include media(extraSmall) {
@@ -88,7 +94,15 @@
 		}
 
 		@include media(smallToMedium) {
-			width:50%;
+			width:100%;
+		}
+
+		@include media(medium) {
+			width: 100%;
+		}
+
+		@include media(large) {
+			width: 100%;
 		}
 	}
 
