@@ -1,4 +1,3 @@
-import { AdminLayoutModule } from './backend/layouts/admin-layout/admin-layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
@@ -33,7 +32,6 @@ import { ComponentsModule } from "./backend/components/components.module";
     HomeModule,
     AccountModule,
     ComponentsModule,
-    AdminLayoutModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

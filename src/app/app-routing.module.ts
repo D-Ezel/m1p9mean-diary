@@ -1,4 +1,3 @@
-import { DashboardComponent } from './backend/pages/dashboard/dashboard.component';
 import { AccountComponent } from './client/account/account.component';
 import { SignupComponent } from './client/account/components/signup/signup.component';
 import { LoginComponent } from './client/account/components/login/login.component';
@@ -8,16 +7,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './backend/layouts/admin-layout/admin-layout.component';
 
 const routes: Routes = [{
-  path:"",
+  path:'',
   component: HomeComponent,
 },{
-  path:"admin",
+  path:'admin',
   component: AdminLayoutComponent,
   children: [
     {
-      path: "dashboard",
-      component: DashboardComponent
-    },
+      path: "",
+      loadChildren: () => import ("./backend/layouts/admin-layout/admin-layout.module").then(m => m.AdminLayoutModule)
+    }
   ]
 },{
   path:'account',

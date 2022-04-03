@@ -19,10 +19,10 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
   ],
   declarations: [
     DashboardComponent,
