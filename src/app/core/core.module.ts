@@ -15,7 +15,7 @@ import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/d
     MatDialogModule
   ],
   exports: [
-    NavbarComponent,
+    NavbarComponent
   ],
   providers:[{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}]
 })

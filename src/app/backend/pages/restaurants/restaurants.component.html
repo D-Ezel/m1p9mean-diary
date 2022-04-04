@@ -1,4 +1,101 @@
-<div class=" content">
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body all-icons">
+          <mat-tab-group backgroundColor="primary" dynamicHeight>
+            <mat-tab  class="label-title" label="Liste">
+              <div class="example-small-box mat-elevation-z4">
+                restaurant antanimena analakely
+              </div>
+              <div class="example-small-box mat-elevation-z4">
+                Par restaurant
+              </div>
+              <div class="example-small-box mat-elevation-z4">
+                Par restaurant
+              </div>
+            </mat-tab>
+            <mat-tab class="label-title" label="Enregistrement">
+              <div class="example-large-box mat-elevation-z4">
+                <div class="content-save">
+                  <form>
+                    <div class=" row">
+                      <div class=" col-md-6 pr-md-1">
+                        <div class=" form-group">
+                          <label> Nom du Restaurant </label>
+                          <input
+                            class=" form-control"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6 pr-md-1">
+                        <mat-form-field class="example-chip-list" appearance="fill">
+                          <mat-label>Categories</mat-label>
+                          <mat-chip-list #chipList aria-label="Fruit selection">
+                            <mat-chip
+                              *ngFor="let fruit of fruits"
+                              (removed)="remove(fruit)">
+                              {{fruit}}
+                              <mat-icon matChipRemove >cancel</mat-icon>
+                            </mat-chip>
+                            <input
+                              placeholder="New fruit..."
+                              #fruitInput
+                              [formControl]="fruitCtrl"
+                              [matAutocomplete]="auto"
+                              [matChipInputFor]="chipList"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              (matChipInputTokenEnd)="add($event)">
+                          </mat-chip-list>
+                          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                              {{fruit}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <form [formGroup]="stateForm">
+                          <mat-form-field appearance="fill">
+                            <mat-label>Ville</mat-label>
+                            <input type="text"
+                                   matInput
+                                   formControlName="stateGroup"
+                                   [matAutocomplete]="autoGroup">
+                              <mat-autocomplete #autoGroup="matAutocomplete">
+                                <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                                  <mat-option *ngFor="let name of group.names" [value]="name">
+                                    {{name}}
+                                  </mat-option>
+                              </mat-optgroup>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </form>	
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12"> 
+                        <div #map></div>
+                      </div>
+                    </div>
+                    <div>
+                      <button class=" btn btn-fill btn-danger" type="submit">Enregistrer</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<!--<div class=" content">
   <div class=" row">
     <div class=" col-md-6">
       <div class=" card">
@@ -179,4 +276,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

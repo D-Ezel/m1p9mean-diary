@@ -43,11 +43,11 @@ const NAMES: string[] = [
 
 
 @Component({
-  selector: "app-map",
-  templateUrl: "map.component.html",
-  styleUrls: ["./map.component.scss"]
+  selector: "app-livreurs",
+  templateUrl: "livreurs.component.html",
+  styleUrls: ["./livreurs.component.scss"]
 })
-export class MapComponent implements OnInit {
+export class LivreursComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
   dataSource: MatTableDataSource<UserData>;
 
