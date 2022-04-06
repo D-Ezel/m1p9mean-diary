@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dishes.component.scss']
 })
 export class DishesComponent implements OnInit {
-
+  sideBarOpen = true;
+  
   constructor() { }
 
   ngOnInit(): void {

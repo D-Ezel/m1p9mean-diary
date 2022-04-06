@@ -1,3 +1,5 @@
+import { DishesModule } from './client/dishes/dishes.module';
+import { DishesComponent } from './client/dishes/dishes.component';
 import { RestoEkalyComponent } from './client/resto-ekaly/resto-ekaly.component';
 import { AccountComponent } from './client/account/account.component';
 import { SignupComponent } from './client/account/components/signup/signup.component';
@@ -36,6 +38,15 @@ const routes: Routes = [{
     {
       path: "",
       loadChildren: () => import ("./client/resto-ekaly/resto-ekaly.module").then(m => m.RestoEkalyModule)
+    }
+  ]
+},{
+  path:'plats',
+  component: DishesComponent,
+  children: [
+    {
+      path: "",
+      loadChildren: () => import ("./client/dishes/dishes.module").then(m => m.DishesModule)
     }
   ]
 }];
