@@ -1,3 +1,4 @@
+import { RestoEkalyComponent } from './client/resto-ekaly/resto-ekaly.component';
 import { AccountComponent } from './client/account/account.component';
 import { SignupComponent } from './client/account/components/signup/signup.component';
 import { LoginComponent } from './client/account/components/login/login.component';
@@ -28,6 +29,15 @@ const routes: Routes = [{
     path:'signup',
     component: SignupComponent
   }]
+},{
+  path:'resto',
+  component: RestoEkalyComponent,
+  children: [
+    {
+      path: "",
+      loadChildren: () => import ("./client/resto-ekaly/resto-ekaly.module").then(m => m.RestoEkalyModule)
+    }
+  ]
 }];
 
 @NgModule({

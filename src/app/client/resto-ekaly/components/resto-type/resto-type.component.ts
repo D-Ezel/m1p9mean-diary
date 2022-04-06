@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestoTypeComponent implements OnInit {
 
+  sideBarOpen = true;
   constructor() { }
 
   ngOnInit(): void {

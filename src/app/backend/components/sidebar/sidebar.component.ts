@@ -32,7 +32,7 @@ export const ROUTES: RouteInfo[] = [
   },
 
   {
-    path: "/admin/user",
+    path: "/admin/dishes-to-delivery",
     title: "Plats à livrer",
     icon: "icon-square-pin",
     class: ""

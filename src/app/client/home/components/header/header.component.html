@@ -7,7 +7,7 @@
 		<div class="header__welcome__Delivery">
 			<form [formGroup]="stateForm">
 				<mat-form-field class="--input-fullWidth" appearance="fill">
-					<mat-label>Ville</mat-label>
+					<mat-label>Lieu de la livraison</mat-label>
 					<input type="text"
 								 matInput
 								 formControlName="stateGroup"
@@ -21,6 +21,9 @@
 						</mat-optgroup>
 					</mat-autocomplete>
 				</mat-form-field>
+				<a [routerLink]="['/resto']">
+					<button class="btn-color" mat-raised-button> Continuer</button>
+				</a>
 			</form>			
 		</div>
 	</div>

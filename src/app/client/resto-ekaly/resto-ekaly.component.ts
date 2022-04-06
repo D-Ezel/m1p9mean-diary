@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resto-ekaly.component.scss']
 })
 export class RestoEkalyComponent implements OnInit {
-
+  sideBarOpen = true;
+  
   constructor() { }
 
   ngOnInit(): void {

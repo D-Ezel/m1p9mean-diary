@@ -24,6 +24,12 @@
   width: 100%;
 }
 
+.map  {
+  ::ng-deep .mapboxgl-canvas {
+    height:auto;
+  }
+}
+
 #map {
   width:100%;
   height:100%; 
