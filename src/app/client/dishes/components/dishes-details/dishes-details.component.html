@@ -1,9 +1,32 @@
-<div class="food">
-	<div class="container-food">
-					
+<div class="food-column">
+	<div class="food">
+		<div class="container-food">
+						
+		</div>
+		<div class="container-food__desc">
+			<p class="food__name">Asparagus wild</p>
+			<p class="food__desc">Aliment composé de salade, jambon, crevette, cocombre, panini, olive, haricot, poome, peche, poire</p>
+			<div class="food__row">
+				<span>50 000Ar</span>
+				<button mat-raised-button>Ajouter dans panier</button>
+			</div>
+		</div>
 	</div>
-	<div class="container-food__desc">
-		
+	<div>
+		<div class="content-section">
+			<div class="card-container">
+				<p-carousel [value]="images" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1"
+				[circular]="true" [autoplayInterval]="0" [responsiveOptions]="responsiveOptions">
+					<ng-template let-image pTemplate="item">
+						<div class="item card-perso">
+							<img src="{{image.picture}}" alt="...">
+							<span class="card-perso__prize">5 000 000Ar</span>
+							<h5 class="card-title">{{image.random}}</h5>
+						</div>
+					</ng-template>
+				</p-carousel>
+			</div>
+		</div>
 	</div>
 </div>
 

@@ -2,23 +2,104 @@
 @import "../../../../styles/colors.scss";
 @import "../../../../styles/mixins.scss";
 
-.container-food {
-	display: block;
-	position:absolute;
-	top:0;
-	left:10%;
-	width:300px;
-	height:60%;
-	background-color: $pink;
+
+.food-column {
+	display:flex;
+	flex-direction: column;
+	
+	.food {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 6%;
+
+		.container-food {
+			display: block;
+			position:absolute;
+			top:0;
+			left:8%;
+			width:300px;
+			height:60%;
+			background-color: $pink;
+		}
+		
+		.container-food__desc {
+			display:flex;
+			flex-direction: column;
+			max-width:400px;
+			padding:45px 15px;
+			.food__name {
+				font-size:32px;
+				font-weight: 600;
+				color:$purple;
+				margin-bottom:25px;
+			}
+			.food__desc {
+				font-size:18px;
+				line-height: 22px;
+				color:$light-text;
+			}
+			.food__row {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				span {
+					color:$pink;
+					font-size: 24px;
+					font-weight: 500;
+				}
+
+				button {
+					color:$purple;
+					font-weight: 500;
+				}
+			}
+			
+			//background-color: black;
+		}
+	}
+	.content-section {
+		width: auto;
+		.card-container {
+			width:100%;
+			.card-perso {
+				margin-left:10px;
+				margin-top:15px;
+				background-color: $beige;
+				box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+				position: relative;
+				border-radius:12px;
+				width: 80%;
+				padding:25px 0;
+				margin-bottom: 25px;
+				
+				img {
+					width:70px;
+					height:70px;
+					position: absolute;
+					left:-7px;
+					top:-7px;
+					border-radius: 50%;
+				}
+
+				.card-perso__prize {
+					position:absolute;
+					right:0;
+					top:0;
+					padding:20px 10px;
+					color:$pink;
+					//background-color: $purple;
+					font-size: 18px;
+					font-weight: 600;
+				}
+
+				.card-title {
+					padding: 45px 20px 0 20px;
+					font-size: 18px;
+					font-weight: 400;
+					color:$purple;
+				}
+			}
+		}
+	}
 }
 
-.food {
-	display: flex;
-	justify-content: center;
-}
-
-.container-food__desc {
-	width:400px;
-	height:250px;
-	background-color: black;
-}
