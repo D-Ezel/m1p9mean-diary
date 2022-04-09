@@ -1,13 +1,14 @@
 import express from "express";
-
 import path from "path";
 import {fileURLToPath} from "url";
 import bodyParser from "body-parser";
+import { logError, sendError  } from "./Server side/middlewares/errors-handlers.js"
+import cors from "cors";
 
 import mongoose from "mongoose";
 import connectionString from "./Server side/db.js";
 
-import Router from "./Server side/routes.js";
+import ServerRoutes from "./Server side/server.routes.js";
 
 // Create new instance of the express server
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 // Define the JSON parser as a default way 
 // to consume and produce data through the 
 // exposed APIs
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
@@ -29,7 +31,10 @@ db.once("open", function () {
 	console.log("Connected successfully");
 });
 	
-app.use(Router);
+app.use("/api",ServerRoutes);
+
+app.use(logError);
+app.use(sendError);
 
 const port = process.env.PORT || 8888;
 if(process.env.NODE_ENV === "production") {

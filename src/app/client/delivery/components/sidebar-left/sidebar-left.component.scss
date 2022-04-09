@@ -1,0 +1,15 @@
+@import "../../../../styles/global.scss";
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/mixins.scss";
+
+.sidebar-left-wrapper__menuItem {
+	color: $pink;
+}
+
+mat-list-option {
+	
+}
+
+.mat-list-single-selected-option, .mat-list-single-selected-option:hover, .mat-list-single-selected-option:focus {
+	background-color: $purple;
+}

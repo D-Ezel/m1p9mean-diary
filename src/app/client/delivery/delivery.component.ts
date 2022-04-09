@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delivery.component.scss']
 })
 export class DeliveryComponent implements OnInit {
-
+  sideBarOpen = true;
+  
   constructor() { }
 
   ngOnInit(): void {

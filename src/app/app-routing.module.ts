@@ -1,3 +1,6 @@
+import { DeliveryComponent } from './client/delivery/delivery.component';
+import { CheckoutComponent } from './client/checkout/checkout.component';
+import { DefaultComponent } from './client/layouts/default/default.component';
 import { DishesModule } from './client/dishes/dishes.module';
 import { DishesComponent } from './client/dishes/dishes.component';
 import { RestoEkalyComponent } from './client/resto-ekaly/resto-ekaly.component';
@@ -47,6 +50,21 @@ const routes: Routes = [{
     {
       path: "",
       loadChildren: () => import ("./client/dishes/dishes.module").then(m => m.DishesModule)
+    }
+  ]
+},{
+  path:'cart',
+  component: DefaultComponent,
+  children: [
+    {
+      path: "checkout",
+      component:CheckoutComponent,
+      loadChildren: () => import ("./client/checkout/checkout.module").then(m => m.CheckoutModule)
+    },
+    {
+      path:"delivery",
+      component:DeliveryComponent,
+      loadChildren: () => import ("./client/delivery/delivery.module").then(m => m.DeliveryModule)
     }
   ]
 }];

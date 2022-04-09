@@ -1,1 +1,15 @@
-<p>checkout works!</p>
+<mat-drawer-container>
+  
+	<mat-drawer mode="side" [opened]="sideBarOpen">
+		<app-sidebar-left></app-sidebar-left>
+	</mat-drawer>
+	
+	<mat-drawer-content>
+		<router-outlet></router-outlet>
+	</mat-drawer-content>
+
+	<mat-drawer #drawer mode="side" position="end">
+		
+	</mat-drawer>
+    
+</mat-drawer-container>

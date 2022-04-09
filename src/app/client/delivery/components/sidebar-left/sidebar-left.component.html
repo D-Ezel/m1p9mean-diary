@@ -1,0 +1,9 @@
+<div class="sidebar-left-wrapper">
+	<mat-selection-list #shoes [multiple]="false">
+		<mat-list-option routerLinkActive="active" *ngFor="let menuItem of menuItems" [value]="menuItem.title">
+			<a [routerLink]="[menuItem.path]">
+				<p class="sidebar-left-wrapper__menuItem"><mat-icon>{{menuItem.icon}}</mat-icon> {{ menuItem.title }}</p>
+			</a>
+		</mat-list-option>
+	</mat-selection-list>
+</div>

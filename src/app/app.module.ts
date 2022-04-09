@@ -1,3 +1,4 @@
+import { DefaultModule } from './client/layouts/default/default.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
@@ -31,6 +32,7 @@ import { ComponentsModule } from "./backend/components/components.module";
     CoreModule,
     HomeModule,
     AccountModule,
+    DefaultModule,
     ComponentsModule,
     ToastrModule.forRoot(),
   ],

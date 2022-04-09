@@ -1,0 +1,23 @@
+import mongoose from "mongoose";
+import "./resto.js";
+const DishesSchema = new mongoose.Schema({
+	name: {
+		type: String
+	},
+	description: {
+		type: String
+	},
+	restoref: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Resto',
+    required: true
+	},
+	price: {
+		type: Number,
+		required:true
+	}
+});
+  
+const Dishes = mongoose.model("Dishes", DishesSchema);
+
+export default Dishes;

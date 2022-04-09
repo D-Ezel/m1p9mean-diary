@@ -6,7 +6,7 @@ const config = {
 		cluster: 'cluster0.wa4xc.mongodb.net',
 		username: "e-kaly",
 		pwd:"e-kalyMEAN",
-		dbname: 'sample_analytics'
+		dbname: 'ekaly'
 	}
 };
 	

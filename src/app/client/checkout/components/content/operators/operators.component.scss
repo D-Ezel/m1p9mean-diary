@@ -1,0 +1,67 @@
+@import "../../../../../styles/global.scss";
+@import "../../../../../styles/colors.scss";
+@import "../../../../../styles/mixins.scss";
+
+p {
+    font-size:16px;
+    color:black
+}
+
+.wrapper-content {
+	//background-color: $purple;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	height:100%;
+	.card-operator {
+		background: url('../../../../../../assets/images/phone_hand_1.png');
+		background-position: top;
+		background-size: cover;
+		width:500px;
+		height:500px;
+		background-color: white;
+	}
+
+	.card-operator__row {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		text-align: center;
+		margin-right:79px;
+		margin-top:50px;
+
+		.card-operator__form {
+			
+		}
+
+		.card-operator__partnership {
+			display: flex;
+			justify-content: space-around;
+			width:100%;
+			margin-left: 25px;
+
+			.telma-operator {
+				//background-color: green;
+				/*background: url('../../../../../../assets/images/phone_hand_1.png');
+				background-position: center;
+				background-size: cover;
+				width:500px;
+				height:500px;*/
+			}
+
+			.orange-operator {
+				//background-color: orange;
+				width:150px;
+				height:250px;
+			}
+
+			.airtel-operator {
+				//background-color: red;
+				width:150px;
+				height:250px;
+			}
+		}
+	}
+}
