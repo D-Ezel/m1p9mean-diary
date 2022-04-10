@@ -4,11 +4,14 @@ import {fileURLToPath} from "url";
 import bodyParser from "body-parser";
 import { logError, sendError  } from "./Server side/middlewares/errors-handlers.js"
 import cors from "cors";
+import session from "express-session";
 
 import mongoose from "mongoose";
 import connectionString from "./Server side/db.js";
 
 import ServerRoutes from "./Server side/server.routes.js";
+
+import MongoStore from "connect-mongo";
 
 // Create new instance of the express server
 const app = express();
@@ -16,10 +19,6 @@ const app = express();
 // Define the JSON parser as a default way 
 // to consume and produce data through the 
 // exposed APIs
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json());
-
 mongoose.connect(connectionString, { 
 	useNewUrlParser: true,
 	useUnifiedTopology: true 
@@ -30,7 +29,23 @@ db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
 	console.log("Connected successfully");
 });
+
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(session({
+	secret:"mysupersecret",
+	resave:false,
+	saveUninitialized: false,
+	store: MongoStore.create({ mongoUrl: connectionString }),
+	cookie: { maxAge: 180 * 60 * 1000 }
+}))
 	
+app.use(function(req,res,next) {
+	res.locals.session = req.session;
+	next();
+})
+
 app.use("/api",ServerRoutes);
 
 app.use(logError);
