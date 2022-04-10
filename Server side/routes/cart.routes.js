@@ -17,7 +17,7 @@ app.get("/add/:id", (req, res, next) => {
 	const dishId = req.params.id;
 	add(dishId, req, (err, cart) => {
 		if(err) next(err);
-		res.json(cart);
+		res.status(200).json(cart);
 	});
 })
 
@@ -25,7 +25,7 @@ app.get("/drop/:id", (req, res, next) => {
 	const dishId = req.params.id;
 	drop(dishId, req, (err, cart) => {
 		if(err) next(err);
-		res.json(cart);
+		res.status(200).json(cart);
 	})
 })
 

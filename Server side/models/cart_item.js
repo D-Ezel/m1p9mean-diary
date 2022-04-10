@@ -8,7 +8,7 @@ const CartItemSchema = new mongoose.Schema({
 		ref:"Dishes",
 		required:true
 	},
-	cart_item_list: {
+	ordered: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref:"Ordered",
 		required:true
@@ -20,11 +20,7 @@ const CartItemSchema = new mongoose.Schema({
 	price: {
 		type: Number,
 		required: true
-	},
-	created_at: {
-    type: Date,
-    default: new Date()
-  }
+	}
 });
   
 const CartItem = mongoose.model("CartItem", CartItemSchema, "cart_item");

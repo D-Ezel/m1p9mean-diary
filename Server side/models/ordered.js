@@ -10,7 +10,6 @@ const OrderedSchema = new mongoose.Schema({
 	cart_item: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref:"CartItem",
-		required:true
 	}],
 	sumQty: {
 		type: Number,
@@ -18,6 +17,14 @@ const OrderedSchema = new mongoose.Schema({
 	},
 	sumPrice: {
 		type: Number,
+		required: true
+	},
+	typeOfDelivery: {
+		type: String,
+		required: true
+	},
+	timeToDelivery: {
+		type:String,
 		required: true
 	},
 	created_at: {
