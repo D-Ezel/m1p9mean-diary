@@ -44,6 +44,7 @@
     "mapbox-gl": "^2.7.1",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.9",
+    "ngx-cookie-service": "^12.0.3",
     "ngx-toastr": "^14.2.2",
     "primeng": "^12.2.3",
     "rxjs": "~6.6.0",

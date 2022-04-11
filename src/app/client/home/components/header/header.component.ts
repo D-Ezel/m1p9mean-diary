@@ -1,12 +1,12 @@
+import { Location } from "../../../../models/Location";
+import { LocationService } from './../../../../services/location.service';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
+import { StateGroup } from "src/app/class/StateGroup";
 import {startWith, map} from 'rxjs/operators';
-
-export interface StateGroup {
-  letter: string;
-  names: string[];
-}
+import { Router,  ActivatedRoute  } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 export const _filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
@@ -24,115 +24,69 @@ export class HeaderComponent implements OnInit {
   stateForm: FormGroup = this._formBuilder.group({
     stateGroup: '',
   });
-
-  stateGroups: StateGroup[] = [
-    {
-      letter: 'A',
-      names: ['Alabama', 'Alaska', 'Arizona', 'Arkansas'],
-    },
-    {
-      letter: 'C',
-      names: ['California', 'Colorado', 'Connecticut'],
-    },
-    {
-      letter: 'D',
-      names: ['Delaware'],
-    },
-    {
-      letter: 'F',
-      names: ['Florida'],
-    },
-    {
-      letter: 'G',
-      names: ['Georgia'],
-    },
-    {
-      letter: 'H',
-      names: ['Hawaii'],
-    },
-    {
-      letter: 'I',
-      names: ['Idaho', 'Illinois', 'Indiana', 'Iowa'],
-    },
-    {
-      letter: 'K',
-      names: ['Kansas', 'Kentucky'],
-    },
-    {
-      letter: 'L',
-      names: ['Louisiana'],
-    },
-    {
-      letter: 'M',
-      names: [
-        'Maine',
-        'Maryland',
-        'Massachusetts',
-        'Michigan',
-        'Minnesota',
-        'Mississippi',
-        'Missouri',
-        'Montana',
-      ],
-    },
-    {
-      letter: 'N',
-      names: [
-        'Nebraska',
-        'Nevada',
-        'New Hampshire',
-        'New Jersey',
-        'New Mexico',
-        'New York',
-        'North Carolina',
-        'North Dakota',
-      ],
-    },
-    {
-      letter: 'O',
-      names: ['Ohio', 'Oklahoma', 'Oregon'],
-    },
-    {
-      letter: 'P',
-      names: ['Pennsylvania'],
-    },
-    {
-      letter: 'R',
-      names: ['Rhode Island'],
-    },
-    {
-      letter: 'S',
-      names: ['South Carolina', 'South Dakota'],
-    },
-    {
-      letter: 'T',
-      names: ['Tennessee', 'Texas'],
-    },
-    {
-      letter: 'U',
-      names: ['Utah'],
-    },
-    {
-      letter: 'V',
-      names: ['Vermont', 'Virginia'],
-    },
-    {
-      letter: 'W',
-      names: ['Washington', 'West Virginia', 'Wisconsin', 'Wyoming'],
-    },
-  ];
+  stateGroups: StateGroup[] = new Array();
 
   stateGroupOptions: Observable<StateGroup[]>;
+  locationList: Array<Location>;
+  
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private locationService: LocationService, 
+    private cookie: CookieService,
+    private router: Router, 
+    public activatedRoute: ActivatedRoute  
+  ) {}
+  
+  continue() {
+    this.locationList.forEach((locationItem) => {
+      if(locationItem.name == this.stateForm.value.stateGroup) {
+        this.cookie.set('locationName', locationItem.name);
+        this.cookie.set('locationId', locationItem._id);
+        this.cookie.set('lngLocation', ""+locationItem.coordinate.lng);
+        this.cookie.set('latLocation', ""+locationItem.coordinate.lat);
+        this.cookie.set('locationCityref', locationItem.cityref._id);
+        this.router.navigate(['/resto']);
+      }
+    })
+  }
+  stateTemp: StateGroup;
+  defineStateGroup(locations:Array<Location>) {
+    for(let i=0; i<locations.length; i++) {
+      if(this.stateGroups.length == 0) {
+        this.stateTemp = new StateGroup(); 
+        this.stateTemp.letter = locations[i].name.charAt(0);
+        this.stateTemp.names.push(locations[i].name); 
+        this.stateGroups.push(this.stateTemp);
+      } else {
+        for(let j=0; j<this.stateGroups.length; j++) {
+          if(locations[i].name.charAt(0) == this.stateGroups[j].letter) {
+            this.stateGroups[j].names.push(locations[i].name);
+            break;
+          } else {
+            this.stateTemp = new StateGroup();
+            this.stateTemp.letter = locations[i].name.charAt(0);
+            this.stateTemp.names.push(locations[i].name); 
+            this.stateGroups.push(this.stateTemp);
+            break;
+          }
+        }
+      }
+    }
+  }
 
-  constructor(private _formBuilder: FormBuilder) {}
+
 
   ngOnInit() {
+    this.locationService.getLocation().subscribe((rs:any) => {
+      this.locationList = rs;
+      this.defineStateGroup(this.locationList);
+      console.log(this.locationList);
+    })
     this.stateGroupOptions = this.stateForm.get('stateGroup')!.valueChanges.pipe(
       startWith(''),
       map(value => this._filterGroup(value)),
     );
   }
-
   private _filterGroup(value: string): StateGroup[] {
     if (value) {
       return this.stateGroups

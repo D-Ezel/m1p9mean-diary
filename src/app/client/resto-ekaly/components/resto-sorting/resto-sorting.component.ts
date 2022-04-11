@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-resto-sorting',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestoSortingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookie: CookieService) { }
 
   ngOnInit(): void {
+    console.log(this.cookie.get("locationName"))  
   }
 
 }

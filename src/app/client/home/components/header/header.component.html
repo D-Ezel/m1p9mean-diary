@@ -5,7 +5,7 @@
 			<h1 class="title-text">'Ndao e-kaly!</h1>
 		</div>
 		<div class="header__welcome__Delivery">
-			<form [formGroup]="stateForm">
+			<form [formGroup]="stateForm" (ngSubmit)="continue()">
 				<mat-form-field class="--input-fullWidth" appearance="fill">
 					<mat-label>Lieu de la livraison</mat-label>
 					<input type="text"
@@ -21,9 +21,9 @@
 						</mat-optgroup>
 					</mat-autocomplete>
 				</mat-form-field>
-				<a [routerLink]="['/resto']">
-					<button class="btn-color" mat-raised-button> Continuer</button>
-				</a>
+				<div>
+					<button class="btn-color" type="submit" mat-raised-button> Continuer</button>
+				</div>
 			</form>			
 		</div>
 	</div>
