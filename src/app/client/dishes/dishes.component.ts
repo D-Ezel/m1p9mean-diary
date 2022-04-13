@@ -1,3 +1,4 @@
+import { TypeRestoService } from './../resto-ekaly/services/type-resto.service';
 import { Dishes } from './models/Dishes';
 import { DishesService } from './services/dishes.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,6 +23,7 @@ export class DishesComponent implements OnInit {
     .subscribe((dishesRs: any) => {
       this.listDishes = dishesRs;
       this.dishesService.setDishesDesigned(this.listDishes);
+      this.dishesService.setCategDishRestoDesigned(this.listDishes[0].restoref.type);
     })
   }
 

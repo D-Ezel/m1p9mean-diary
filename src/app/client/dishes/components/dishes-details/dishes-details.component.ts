@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DishesDetailsComponent implements OnInit {
   listDishes: Dishes[];
+  dishDisplayDesc: Dishes;
   responsiveOptions;
   constructor(private dishesService: DishesService) { 
     this.responsiveOptions = [{
@@ -30,6 +31,7 @@ export class DishesDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.dishesService.currentDishes.subscribe((dishesData: any) => {
       this.listDishes = dishesData;
+      this.dishDisplayDesc = this.listDishes[0];
     })
   }
 

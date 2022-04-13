@@ -1,18 +1,18 @@
 <div class="food-column">
 	<div class="food">
 		<div class="container-food">
-						
+			<img src="https://picsum.photos/id/984/900/500" height="350" width="350" alt="...">
 		</div>
 		<div class="container-food__desc">
-			<p class="food__name">Asparagus wild</p>
-			<p class="food__desc">Aliment composé de salade, jambon, crevette, cocombre, panini, olive, haricot, poome, peche, poire</p>
+			<p class="food__name">{{dishDisplayDesc.name}}</p>
+			<p class="food__desc">{{dishDisplayDesc.description}}</p>
 			<div class="food__row">
-				<span>50 000Ar</span>
+				<span>{{dishDisplayDesc.price}} Ar</span>
 				<button mat-raised-button>Ajouter dans panier</button>
 			</div>
 		</div>
 	</div>
-	<div>
+	<div class="caroussel-section">
 		<div class="content-section">
 			<div class="card-container">
 				<p-carousel [value]="listDishes" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1"

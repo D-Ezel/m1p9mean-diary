@@ -1,3 +1,5 @@
+import { TypeResto } from './../../../resto-ekaly/models/TypeResto';
+import { DishesService } from './../../services/dishes.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dishes-category.component.scss']
 })
 export class DishesCategoryComponent implements OnInit {
+  listDishCateg: TypeResto[];
 
-  constructor() { }
+  constructor(private dishesService: DishesService) { }
+
+  searchByDishCateg(dishCateg?:TypeResto) {
+    if(!dishCateg) {
+      
+    }
+  }
 
   ngOnInit(): void {
+    this.dishesService.currentcategDishResto.subscribe((categDishResto: any) => {
+      this.listDishCateg = categDishResto;
+    })
   }
 
 }
