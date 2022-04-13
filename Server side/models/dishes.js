@@ -15,6 +15,10 @@ const DishesSchema = new mongoose.Schema({
 	price: {
 		type: Number,
 		required:true
+	},
+	state: {
+		type:Number,
+		default: 1
 	}
 });
   

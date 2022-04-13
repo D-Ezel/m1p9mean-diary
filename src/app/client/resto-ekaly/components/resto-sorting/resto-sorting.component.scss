@@ -1,0 +1,33 @@
+@import "../../../../styles/global.scss";
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/mixins.scss";
+
+.sorting {
+	font-family: $base-font-family;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 25px 0;
+	justify-content: space-around;
+	text-align: left;
+	height: 100%;
+	background-color: white;
+
+	.sorting__price {
+		.sorting__price__label {
+			font-size:18px;
+			font-weight: 500;
+			color: $purple;
+		}
+		.example-radio-group {
+			display: flex;
+			flex-direction: column;
+			margin: 15px 0;
+			align-items: flex-start;
+		}
+			
+		.example-radio-button {
+		margin: 5px;
+		}
+	}
+}

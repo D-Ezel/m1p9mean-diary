@@ -1,1 +1,29 @@
-<p>resto-sorting works!</p>
+
+<form class="sorting" [formGroup]="sortingForm">
+
+		<div>
+			<mat-form-field class="searchWrapper" appearance="outline">
+				<mat-label>Recherche restaurant</mat-label>
+				<input type="texte" (input)="searchInputOnType()" matInput formControlName="searchInput">
+			</mat-form-field>
+		</div>
+		<div class="sorting__distance">
+			<mat-slide-toggle style="font-size:18px;
+			font-weight: 500;
+			color: #2d246e;" formControlName="nearestResto" (change)="onNearestRestoChanged()" >Par distance</mat-slide-toggle>
+		</div>
+		<div class="sorting__price">
+			<label id="example-radio-group-label" class="sorting__price__label">Minimum par commande</label>
+			<mat-radio-group 
+				aria-labelledby="example-radio-group-label"
+				class="example-radio-group"
+				formControlName="minimumPrice">
+				<mat-radio-button (change)="onMinimumPriceChanged($event)" class="example-radio-button" [value]=-1>
+					<span>Voir tout</span>
+				</mat-radio-button>
+				<mat-radio-button (change)="onMinimumPriceChanged($event)" class="example-radio-button" *ngFor="let minimumPriceValue of minimumPriceValues" [value]="minimumPriceValue">
+					<span>{{minimumPriceValue}} Ar</span>
+				</mat-radio-button>
+			</mat-radio-group>
+		</div>
+</form>

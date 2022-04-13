@@ -1,8 +1,6 @@
 import { RestoService } from './services/resto.service';
 import { Resto } from './models/Resto';
-import { ToolService } from 'src/app/services/tools.service';
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-resto-ekaly',
@@ -11,26 +9,30 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class RestoEkalyComponent implements OnInit {
   sideBarOpen = true;
-  restoList: Array<Resto> = new Array();
+  restoListPopular: Resto[]; 
+  restoListOthers: Resto[];
   constructor(
-    private toolService: ToolService,
-    private cookie: CookieService,
 		private restoService: RestoService
   ) { }
 
-  nearestResto(itemResto: Resto) {
-    itemResto.km = this.toolService.getDistance2Points(Number(this.cookie.get("latLocation")), Number(this.cookie.get("lngLocation")), itemResto.coordinate.lat, itemResto.coordinate.lng)
-  }
-
   ngOnInit(): void {
-		this.restoService.getResto().subscribe((rs:any) => {
-      this.restoList = rs;
-			console.log(this.restoList);
-			this.restoList.forEach((itemResto) => {
-				this.nearestResto(itemResto);
+		this.restoService.getRestoPopular().subscribe((rs:any) => {
+      this.restoListPopular = rs;
+			this.restoListPopular.forEach((itemRestoPopular) => {
+				this.restoService.nearestResto(itemRestoPopular);
 			})
-			this.restoList = this.restoService.sortDescRestoKm(this.restoList);
-			console.log(this.restoList);
+			this.restoListPopular = this.restoService.sortDescRestoKm(this.restoListPopular);
+      this.restoService.setRestoPopularDesigned(this.restoListPopular);
+      console.log(this.restoListPopular);
+    })
+
+    this.restoService.getRestoOthers("all", -1).subscribe((rs:any) => {
+      this.restoListOthers = rs;
+      this.restoListOthers.forEach((itemRestoOthers) => {
+				this.restoService.nearestResto(itemRestoOthers);
+			})
+      this.restoListOthers = this.restoService.sortDescRestoKm(this.restoListOthers);
+      this.restoService.setRestoOthersDesigned(this.restoListOthers);
     })
   }
 

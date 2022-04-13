@@ -1,1 +1,24 @@
-<p>resto-others works!</p>
+<div class="content-section">
+	<mat-accordion>
+    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel">
+          <h2 class="panel__title">Autres</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="card-container">
+        <p-carousel [value]="listResto" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1"
+        [circular]="true" [autoplayInterval]="0" [responsiveOptions]="responsiveOptions">
+            <ng-template let-listResto pTemplate="item">
+                <div class="item card-perso">
+                  {{listResto.name}}
+                    <span class="card-perso__prize">{{listResto.km}}</span>
+                    <h5 class="card-title">{{listResto.state}}</h5>
+                </div>
+            </ng-template>
+        </p-carousel>
+    	</div>
+    </mat-expansion-panel>
+	</mat-accordion>
+</div>

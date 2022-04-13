@@ -19,6 +19,10 @@ const RestoSchema = new mongoose.Schema({
 		ref: 'Dishes',
     required: true
 	}],
+	state: [{
+		type: Number,
+		default: 1
+	}]
 });
   
 const Resto = mongoose.model("Resto", RestoSchema, "resto");

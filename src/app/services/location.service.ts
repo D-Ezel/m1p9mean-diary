@@ -12,6 +12,6 @@ export class LocationService {
   constructor(private http:HttpClient) { }
 
   public getLocation() {
-    return this.http.get(this.url);
+    return this.http.get(this.localUrl);
   }
 }
