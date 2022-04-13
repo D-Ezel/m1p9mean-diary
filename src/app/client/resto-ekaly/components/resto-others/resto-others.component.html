@@ -8,14 +8,26 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="card-container">
-        <p-carousel [value]="listResto" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1"
+        <p-carousel [value]="listResto" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
         [circular]="true" [autoplayInterval]="0" [responsiveOptions]="responsiveOptions">
             <ng-template let-listResto pTemplate="item">
-                <div class="item card-perso">
-                  {{listResto.name}}
-                    <span class="card-perso__prize">{{listResto.km}}</span>
-                    <h5 class="card-title">{{listResto.state}}</h5>
+              <a [routerLink]="['/plats', listResto._id]">
+                <div class="item card-perso" matRipple
+                [matRippleCentered]="centered"
+                [matRippleDisabled]="disabled"
+                [matRippleUnbounded]="unbounded"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color"
+                >
+                    <div class="card-perso__resto-type">
+                      <span *ngFor="let type of listResto.type">{{type.name}}, </span>
+                    </div>
+                    <span class="card-perso__resto-name">{{listResto.name}}</span>
+                    <div class="card-distance">
+                      <span>{{listResto.km}} Km</span>
+                    </div>
                 </div>
+              </a>
             </ng-template>
         </p-carousel>
     	</div>

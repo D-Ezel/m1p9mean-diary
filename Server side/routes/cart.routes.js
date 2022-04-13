@@ -3,14 +3,8 @@ import { add, drop } from "../controller/cart.controller.js";
 const app = express();
 
 app.get("/", (req,res, next) => {
-	/*restoModel
-	.find({})
-		.populate("type")
-		.populate("dishes", "-restoref")
-			.exec((err, resto) => {
-				if (err) return next(err);
-				res.status(200).json(resto);
-			})*/
+	const cart = req.session.cart
+	res.status(200).json(cart)
 })
 
 app.get("/add/:id", (req, res, next) => {

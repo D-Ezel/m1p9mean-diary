@@ -47,7 +47,7 @@ const hashAndUpdateAllPassword = async (fn) => {
 };
 
 const generateToken = ({ _id, email, profile }) => {
-  return jwt.sign({ _id, email, profile }, process.env.TOKEN_SECRET, {
+  return jwt.sign({ _id, email, profile }, "lol", {
     expiresIn: "2h",
   });
 };
@@ -61,7 +61,7 @@ const login = ({ email, password }, next) => {
     );
 
 	AccountModel.findOne()
-    .or([{ email: login }])
+    .or([{ email: email }])
     .populate("profile")
     .exec((error, account) => {
       if (error) return next(error);

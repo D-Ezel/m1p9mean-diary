@@ -65,6 +65,15 @@ AccountsSchema.pre("save", function (next) {
   }
 });
 
+AccountsSchema.methods.comparePassword = function (password, callback) {
+  bcrypt.compare(password, this.password, function (error, match) {
+    if (error) {
+      return callback(error);
+    } else {
+      callback(null, match);
+    }
+  });
+};
 
 const Account = mongoose.model("accounts", AccountsSchema);
 

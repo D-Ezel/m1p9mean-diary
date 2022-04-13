@@ -8,6 +8,12 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
   styleUrls: ['./resto-others.component.scss']
 })
 export class RestoOthersComponent implements OnInit {
+  centered = false;
+  disabled = false;
+  unbounded = false;
+
+  radius: number;
+  color: string = "#fd775e";
   panelOpenState = true;
   listResto: Resto[]; 
   responsiveOptions;

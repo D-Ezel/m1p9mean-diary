@@ -24,4 +24,12 @@ app.post("/register", function (req,res, next) {
   });
 })
 
+app.post("/login", function (req,res, next) {
+	login(req.body, (error, account) => {
+    if (error) return next(error);
+
+    res.json(account);
+  });
+})
+
 export default app;

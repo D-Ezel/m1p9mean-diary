@@ -10,12 +10,13 @@ import {ToastModule} from 'primeng/toast';
 import { DishesComponent } from './dishes.component';
 import { DishesCategoryComponent } from './components/dishes-category/dishes-category.component';
 import { DishesDetailsComponent } from './components/dishes-details/dishes-details.component';
+import { CartComponent } from '../cart/cart.component';
 import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [DishesComponent, DishesCategoryComponent, DishesDetailsComponent],
+  declarations: [DishesComponent, DishesCategoryComponent, DishesDetailsComponent, CartComponent],
   imports: [
     CommonModule,
     MatChipsModule,

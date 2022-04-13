@@ -28,9 +28,22 @@ export class RestoSortingComponent implements OnInit {
     this.map.setStyle('mapbox://styles/mapbox/' + this.mapStyle)
 }*/
 
-searchBySorting() {
-  //this.colorChip = "primary";
+searchByName() {
   this.searchForm.searchInput = this.sortingForm.value.searchInput;
+  this.searchForm.minimumPrice = -1;
+  this.searchForm.nearestResto = false;
+  this.restoService.getRestoOthers("all", -1, this.searchForm.searchInput)
+    .subscribe((rsSearchOthers: any) => {
+      if(rsSearchOthers != null) {
+        this.restoListOthers = rsSearchOthers;
+        this.restoService.setSearchFormDesigned(this.searchForm);
+      }
+      this.restoService.setRestoOthersDesigned(this.restoListOthers);
+    })
+}
+
+searchBySorting() {
+  //this.colorChip = "primary"
   this.searchForm.minimumPrice = this.sortingForm.value.minimumPrice;
   this.searchForm.nearestResto = this.sortingForm.value.nearestResto;
   this.typeRestoService.currentTypeResto.subscribe((currentTypeRs: any) => {
@@ -58,7 +71,7 @@ searchBySorting() {
   })
 } 
   searchInputOnType() {
-    this.searchBySorting();
+    this.searchByName();
   }
 
   onNearestRestoChanged() {

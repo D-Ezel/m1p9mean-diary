@@ -1,9 +1,11 @@
+import { Resto } from './../../resto-ekaly/models/Resto';
 export class Dishes {
 	constructor(
 		public _id: string = "",
 		public name: string = null,
 		public description: string = null,
 		public price: number = 0,
-		public restoref: string = null
+		public restoref: Resto = null,
+		public picture: string = "https://picsum.photos/id/984/900/500"
 	) {}
 }

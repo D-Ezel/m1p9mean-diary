@@ -1,3 +1,5 @@
+import { Dishes } from './../../models/Dishes';
+import { DishesService } from './../../services/dishes.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dishes-details.component.scss']
 })
 export class DishesDetailsComponent implements OnInit {
-  images; 
+  listDishes: Dishes[];
   responsiveOptions;
-  constructor() { 
+  constructor(private dishesService: DishesService) { 
     this.responsiveOptions = [{
       breakpoint: '1024px',
       numVisible: 1,
@@ -26,14 +28,9 @@ export class DishesDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.images = [
-      {random: 'Random', picture: 'https://picsum.photos/id/944/900/500'},
-      {random: 'Samoa', picture: 'https://picsum.photos/id/1011/900/500'},
-      {random: 'Asparagus Wild', picture: 'https://picsum.photos/id/984/900/500'},
-      {random: 'Cook Island', picture: 'https://picsum.photos/id/944/900/500'},
-      {random: 'Niue', picture: 'https://picsum.photos/id/1011/900/500'},
-      {random: 'American Samoa', picture: 'https://picsum.photos/id/984/900/500'}
-  ];
+    this.dishesService.currentDishes.subscribe((dishesData: any) => {
+      this.listDishes = dishesData;
+    })
   }
 
 }

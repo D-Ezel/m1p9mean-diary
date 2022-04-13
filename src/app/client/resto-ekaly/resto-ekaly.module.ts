@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatRippleModule } from '@angular/material/core';
 
 import { RestoEkalyComponent } from './resto-ekaly.component';
 import { RestoTypeComponent } from './components/resto-type/resto-type.component';
@@ -38,6 +39,7 @@ import { RestoOthersComponent } from './components/resto-others/resto-others.com
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatRippleModule,
     RouterModule
   ],
 })

@@ -44,7 +44,7 @@ const routes: Routes = [{
     }
   ]
 },{
-  path:'plats',
+  path:'plats/:idResto',
   component: DishesComponent,
   children: [
     {
