@@ -1,6 +1,7 @@
 import { Dishes } from './../../models/Dishes';
 import { DishesService } from './../../services/dishes.service';
 import { Component, OnInit } from '@angular/core';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dishes-details',

@@ -1,3 +1,4 @@
+import { CartModule } from './../cart/cart.module';
 import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,17 +7,17 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { DishesComponent } from './dishes.component';
 import { DishesCategoryComponent } from './components/dishes-category/dishes-category.component';
 import { DishesDetailsComponent } from './components/dishes-details/dishes-details.component';
-import { CartComponent } from '../cart/cart.component';
 import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [DishesComponent, DishesCategoryComponent, DishesDetailsComponent, CartComponent],
+  declarations: [DishesComponent, DishesCategoryComponent, DishesDetailsComponent],
   imports: [
     CommonModule,
     MatChipsModule,
@@ -25,7 +26,9 @@ import { RouterModule } from '@angular/router';
     CarouselModule,
     ButtonModule,
     MatButtonModule,
-    ToastModule
+    ToastModule,
+    DragDropModule,
+    CartModule
   ]
 })
 export class DishesModule { }

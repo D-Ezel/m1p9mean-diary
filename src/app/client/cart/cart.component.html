@@ -1,3 +1,37 @@
 <div class="cart">
-    <p>cart works!</p>
+    <div class="example-container">
+			<div class="buy-wrapper">
+        <mat-icon matBadge="15" matBadgeColor="warn">add_shopping_cart</mat-icon>
+				<span class="buy__price">500000 Ar</span>
+			</div>
+      <div class="boundary">
+        <div
+          cdkDropList
+          [cdkDropListData]="listDishes"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+          cdkDragBoundary=".boundary"
+          >
+          <div class="example-box" *ngFor="let item of listDishes" cdkDrag>
+            <div>
+              <strong class="box__dish">
+                <mat-icon>delete_outline</mat-icon>
+                <span>{{item.name}}</span>
+              </strong>
+              </div>
+            <div>
+              <img style="border-radius: 50%;" src="https://picsum.photos/id/984/900/500" width="25" height="25" />
+            </div>
+            <div class="box__qty">
+              <span class="box">-</span>
+              <span class="box">1</span>
+              <span class="box">+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buy__btn">
+        <button mat-raised-button color="primary">Acheter</button>
+      </div>
+    </div>
 </div>

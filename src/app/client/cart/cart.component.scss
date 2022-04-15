@@ -1,5 +1,117 @@
+@import "../../styles/global.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+
 .cart {
     width:100%;
     height:100%;
+    padding: 15px;
     background-color: white;
-}
+    .buy-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .buy__price {
+          padding:16px;
+          background: transparent;
+          font-size: 18px;
+          font-weight: 500;
+          font-family: Arial, Helvetica, sans-serif;
+          color:$purple;
+        }
+    }
+
+  }
+  .example-container {
+    width: 100%;
+    margin: 0 25px 25px 0;
+    display: inline-block;
+    vertical-align: top;
+    overflow-x: hidden;
+    h2 {
+      color:black;
+    }
+    
+    .boundary {
+      width:100%;
+      height:100%;
+      overflow: auto;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+      .example-box {
+        padding: 20px 5px;
+        margin:0 5px;
+        border-bottom: solid 1px #ccc;
+        color: rgba(0, 0, 0, 0.87);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        cursor: move;
+        background: white;
+        font-size: 14px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+        .box__dish {
+          width:80px;
+          display:flex;
+          align-items: center;
+          mat-icon {
+            margin-right:3px;
+          }
+        }
+
+        .box__qty {
+          color: black;
+          padding:5px;
+          background-color:$floralwhite;
+          font-weight: 500;
+          .box {
+            padding: 0 10px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+          }
+        }
+      }
+    }
+
+    .buy__btn {
+      margin-top: 18px;
+      width: 100%;
+      button {
+        background-color: $purple;
+        color:$pink;
+        width: 100%;
+      }
+    }
+  }
+  
+  .example-list {
+    height: 380px;
+    background: transparent;
+    overflow: auto;
+    display: block;
+  }
+  
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .example-box:last-child {
+    border: none;
+  }
+  
+  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
