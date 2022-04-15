@@ -6,6 +6,7 @@ export class Dishes {
 		public description: string = null,
 		public price: number = 0,
 		public restoref: Resto = null,
-		public picture: string = "https://picsum.photos/id/984/900/500"
+		public picture: string = "https://picsum.photos/id/984/900/500",
+		public clickColor: boolean = false
 	) {}
 }

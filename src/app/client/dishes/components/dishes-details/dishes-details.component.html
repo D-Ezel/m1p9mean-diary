@@ -8,7 +8,7 @@
 			<p class="food__desc">{{dishDisplayDesc.description}}</p>
 			<div class="food__row">
 				<span>{{dishDisplayDesc.price}} Ar</span>
-				<button mat-raised-button>Ajouter dans panier</button>
+				<button (click) = "addToCart(dishDisplayDesc)" mat-raised-button>Ajouter dans panier</button>
 			</div>
 		</div>
 	</div>
@@ -21,7 +21,13 @@
 				<p-carousel [value]="listDishes" styleClass="custom-carousel" [numVisible]="4" [numScroll]="1"
 				[circular]="true" [autoplayInterval]="0" [responsiveOptions]="responsiveOptions">
 					<ng-template let-dish pTemplate="item">
-						<div class="item card-perso" cdkDrag>
+						<div (click) ="displayDescOnClick(dish)" [ngClass]="{'item card-perso': !clickCardDefault, '--backgroundColoredOnClick': dish.clickColor}"  cdkDrag>
+							<div class="example-handle" cdkDragHandle>
+								<svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+								  <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+								  <path d="M0 0h24v24H0z" fill="none"></path>
+								</svg>
+							  </div>
 							<img src="https://picsum.photos/id/984/900/500" alt="...">
 							<span class="card-perso__prize">{{dish.price}} Ar</span>
 							<h5 class="card-title">{{dish.name}}</h5>

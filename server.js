@@ -30,7 +30,18 @@ db.once("open", function () {
 	console.log("Connected successfully");
 });
 
-app.use(cors());
+app.use(cors({
+	credentials: true
+}));
+
+app.use(function(req, res, next) {
+	res.header('Access-Control-Allow-Credentials', true);
+	res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+	res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-   Type, Accept, Authorization");
+	next();
+});
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(session({
@@ -45,6 +56,8 @@ app.use(function(req,res,next) {
 	res.locals.session = req.session;
 	next();
 })
+
+
 
 app.use("/api",ServerRoutes);
 
