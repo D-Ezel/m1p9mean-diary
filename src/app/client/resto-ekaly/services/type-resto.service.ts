@@ -20,7 +20,7 @@ export class TypeRestoService {
   }
 
   public getTypeResto() {
-    return this.http.get(this.localUrl);
+    return this.http.get(this.url);
   }
   
 }

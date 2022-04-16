@@ -40,15 +40,15 @@ export class RestoService {
   }
 
   public getResto() {
-    return this.http.get(this.localUrl);
+    return this.http.get(this.url);
   }
 
   public getRestoPopular() {
-    return this.http.get(this.localUrl+"/popular");
+    return this.http.get(this.url+"/popular");
   }
 
   public getRestoOthers(categRestoId:string, searchMinimumPrice:Number, searchInput?:string) {
-    let urlParam = this.localUrl + "/others/"+categRestoId+"/"+searchMinimumPrice;
+    let urlParam = this.url + "/others/"+categRestoId+"/"+searchMinimumPrice;
     if(searchInput) {
       urlParam += "/"+searchInput;
     }

@@ -26,6 +26,6 @@ export class DishesService {
   }
 
   public getDishesByRestoId(restoId: string) {
-    return this.http.get(this.localUrl+"/restoref/"+restoId); 
+    return this.http.get(this.url+"/restoref/"+restoId); 
   }
 }

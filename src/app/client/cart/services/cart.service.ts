@@ -30,7 +30,7 @@ export class CartService {
   }
 
   public addCart(dishId:string) {
-    let urlParam = this.localUrl + "/add/"+dishId;
+    let urlParam = this.url + "/add/"+dishId;
     const headers = {
       'withCredentials':true
     }
@@ -38,7 +38,7 @@ export class CartService {
   }
 
   public dropCart(dishId:string) {
-    let urlParam = this.localUrl + "/drop/"+dishId;
+    let urlParam = this.url + "/drop/"+dishId;
     const headers = {
       'withCredentials':true,
     }
@@ -49,6 +49,6 @@ export class CartService {
     const headers = {
       'withCredentials':true,
     }
-    return this.http.get(this.localUrl, headers);
+    return this.http.get(this.url, headers);
   }
 }
