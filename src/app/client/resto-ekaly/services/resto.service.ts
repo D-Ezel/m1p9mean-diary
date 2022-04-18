@@ -12,7 +12,10 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class RestoService {
   private localUrl = "http://localhost:8888/api/resto";
-  private url= "https://"+document.domain+"/api/resto";
+  private localPort = ":4200"
+  private localProtocol = "http"
+  private url=  (document.domain.startsWith("localhost") ? this.localProtocol : "https")+"://"+ document.domain + (document.domain.startsWith("localhost") ? this.localPort : "")+"/api/resto"
+ 
   
   private restoPopularSrc = new BehaviorSubject<Resto[]>([new Resto()]);
   currentRestoPopular = this.restoPopularSrc.asObservable();

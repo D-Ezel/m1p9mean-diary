@@ -17,6 +17,7 @@ import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.
 import { OperatorsComponent } from './components/content/operators/operators.component';
 import { BankCardComponent } from './components/content/bank-card/bank-card.component';
 import { CheckoutRoutes } from './checkout.routing';
+import { CartModule } from '../cart/cart.module';
 
 
 
@@ -33,7 +34,7 @@ import { CheckoutRoutes } from './checkout.routing';
     MatButtonModule,
     MatCardModule,
     ReactiveFormsModule,
-    
+    CartModule,
     RouterModule.forChild(CheckoutRoutes)
   ],
   exports:[

@@ -8,7 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TypeRestoService {
   private localUrl = "http://localhost:8888/api/typeResto";
-  private url= "https://"+document.domain+"/api/typeResto";
+  private localPort = ":4200"
+  private localProtocol = "http"
+  private url=  (document.domain.startsWith("localhost") ? this.localProtocol : "https")+"://"+ document.domain + (document.domain.startsWith("localhost") ? this.localPort : "")+"/api/typeResto"
+ 
 
   private typeRestoSrc = new BehaviorSubject<TypeResto>(new TypeResto());
   currentTypeResto = this.typeRestoSrc.asObservable();

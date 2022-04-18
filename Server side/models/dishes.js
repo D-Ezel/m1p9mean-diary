@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import "./resto.js";
+import "./type_resto.js"
 const DishesSchema = new mongoose.Schema({
 	name: {
 		type: String
@@ -19,6 +20,10 @@ const DishesSchema = new mongoose.Schema({
 	state: {
 		type:Number,
 		default: 1
+	},
+	typeref: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'TypeResto',
 	}
 });
   

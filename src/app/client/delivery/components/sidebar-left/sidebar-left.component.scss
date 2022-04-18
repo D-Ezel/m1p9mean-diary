@@ -2,6 +2,9 @@
 @import "../../../../styles/colors.scss";
 @import "../../../../styles/mixins.scss";
 
+.sidebar-left-wrapper {
+	background-color: white;
+}
 .sidebar-left-wrapper__menuItem {
 	color: $pink;
 }

@@ -1,10 +1,20 @@
 <div class="type">
-	<mat-chip-list aria-label="Fish selection">
-		<mat-chip (click) = "searchByDishCateg()">Meilleures ventes</mat-chip>
-		<mat-chip *ngFor="let dishResto of listDishCateg" [color] = "colorChip" (click) = "searchByDishCateg(dishResto)">{{dishResto.name}}</mat-chip>
-		<!--<mat-chip color="primary" selected>Primary fish</mat-chip>
-		<mat-chip color="accent" selected>Accent fish</mat-chip>-->
-	  </mat-chip-list>
+	<div class="category">
+		<mat-chip-list aria-label="Fish selection">
+			<mat-chip (click) = "searchByDishCateg()">Meilleures ventes</mat-chip>
+			<mat-chip *ngFor="let dishResto of listDishCateg" [ngClass]="{'--backgroundColorActivate': dishResto.clicked}" (click) = "searchByDishCateg(dishResto)">{{dishResto.name}}</mat-chip>
+			<!--<mat-chip color="primary" selected>Primary fish</mat-chip>
+			<mat-chip color="accent" selected>Accent fish</mat-chip>-->
+		</mat-chip-list>
+	</div>
+	<div class="login">
+		<a href="#">
+			Se connnecter
+		</a> 
+		<a href="#">
+			S'inscire
+		</a> 
+	</div>
 </div>
   
   

@@ -4,10 +4,10 @@
 			<img src="https://picsum.photos/id/984/900/500" height="350" width="350" alt="...">
 		</div>
 		<div class="container-food__desc">
-			<p class="food__name">{{dishDisplayDesc.name}}</p>
-			<p class="food__desc">{{dishDisplayDesc.description}}</p>
+			<p class="food__name">{{dishDisplayDesc?.name}}</p>
+			<p class="food__desc">{{dishDisplayDesc?.description}}</p>
 			<div class="food__row">
-				<span>{{dishDisplayDesc.price}} Ar</span>
+				<span>{{dishDisplayDesc?.price}} Ar</span>
 				<button (click) = "addToCart(dishDisplayDesc)" mat-raised-button>Ajouter dans panier</button>
 			</div>
 		</div>

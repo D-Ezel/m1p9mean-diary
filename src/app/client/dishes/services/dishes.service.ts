@@ -9,7 +9,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DishesService {
   private localUrl = "http://localhost:8888/api/dishes";
-  private url= "https://"+document.domain+"/api/dishes";
+  private localPort = ":4200"
+  private localProtocol = "http"
+  private url=  (document.domain.startsWith("localhost") ? this.localProtocol : "https")+"://"+ document.domain + (document.domain.startsWith("localhost") ? this.localPort : "")+"/api/dishes"
+ 
   private dishesSrc = new BehaviorSubject<Dishes[]>([new Dishes()]);
   currentDishes = this.dishesSrc.asObservable();
   private categDishRestoSrc = new BehaviorSubject<TypeResto[]>([new TypeResto()]);
@@ -23,6 +26,10 @@ export class DishesService {
 
   setCategDishRestoDesigned(typeResto:TypeResto[]) {
     this.categDishRestoSrc.next(typeResto);
+  }
+
+  public getDishesByIdType(idType: string, idResto: string) {
+    return this.http.get(this.url+"/searchByTypeRef/"+idType+"/"+idResto); 
   }
 
   public getDishesByRestoId(restoId: string) {

@@ -1,1 +1,25 @@
-<p>map-delivery works!</p>
+<div class="map-container">
+	<div class="map-search">
+		<form [formGroup]="stateForm" (ngSubmit)="search()">
+			<mat-form-field class="--input-fullWidth" appearance="fill">
+				<mat-label>Lieu de la livraison</mat-label>
+				<input type="text"
+							 matInput
+							 formControlName="stateGroup"
+							 required
+							 [matAutocomplete]="autoGroup">
+					<mat-autocomplete #autoGroup="matAutocomplete">
+						<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+							<mat-option *ngFor="let name of group.names" [value]="name">
+								{{name}}
+							</mat-option>
+					</mat-optgroup>
+				</mat-autocomplete>
+			</mat-form-field>
+			<button class="btn-color" type="submit" mat-raised-button> rechercher</button>
+		</form>	
+	</div>
+	<div class="map-content">
+		<div id="map" class="map"></div>
+	</div>
+</div>

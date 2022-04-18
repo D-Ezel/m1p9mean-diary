@@ -6,6 +6,13 @@ import { RouterModule } from '@angular/router';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+
 
 import { DeliveryComponent } from './delivery.component';
 import { MapDeliveryComponent } from './components/map-delivery/map-delivery.component';
@@ -22,6 +29,12 @@ import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     RouterModule.forChild(DeliveryRoutes)
   ]
 })

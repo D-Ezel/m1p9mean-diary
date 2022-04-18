@@ -46,6 +46,7 @@
     "mongoose": "^6.2.9",
     "ngx-cookie-service": "^12.0.3",
     "ngx-toastr": "^14.2.2",
+    "nodemailer": "^6.7.3",
     "primeng": "^12.2.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

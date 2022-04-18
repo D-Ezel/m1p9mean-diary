@@ -4,7 +4,6 @@
 
 .cart {
     width:100%;
-    height:100%;
     padding: 15px;
     background-color: white;
     .buy-wrapper {
@@ -82,16 +81,6 @@
           box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
           }
         }
-      }
-    }
-
-    .buy__btn {
-      margin-top: 18px;
-      width: 100%;
-      button {
-        background-color: $purple;
-        color:$pink;
-        width: 100%;
       }
     }
   }

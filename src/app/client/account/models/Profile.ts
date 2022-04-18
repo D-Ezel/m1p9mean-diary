@@ -1,7 +1,7 @@
-export class TypeResto {
+export class Profile {
 	constructor(
 		public _id: string = "",
 		public name: string = null,
-		public clicked: boolean = false
+		public hierarchy: number = 0
 	) {}
-}
+} 

@@ -65,8 +65,10 @@ export class CartComponent implements OnInit {
         this.cartService.getCart().subscribe((cartRs: any) => {
           let cart={items:{},sumQty:0, sumPrice:0};
           cart = cartRs;
-          this.cart = this.cartService.itemDishDisplay(cart);
-          this.cartService.setCartDesigned(this.cart);
+          if(cart) {
+            this.cart = this.cartService.itemDishDisplay(cart);
+            this.cartService.setCartDesigned(this.cart);
+          }
         })
       }
     })
