@@ -99,6 +99,8 @@ export class MapDeliveryComponent implements OnInit {
     }
   }
 
+  deliver() {}
+
   ngOnInit() {
     (mapboxgl as any).accessToken = environment.mapboxKey;
     this.map = new mapboxgl.Map({
