@@ -24,6 +24,14 @@
 		width:100%;
 		padding:15px 38px;
 		.map {
+			.markerInfo {
+				background-image: url('../../../../../assets/images/pin.png');
+				background-size: cover;
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				cursor: pointer;
+			}
 			::ng-deep .mapboxgl-canvas {
 				height:auto;
 			}	

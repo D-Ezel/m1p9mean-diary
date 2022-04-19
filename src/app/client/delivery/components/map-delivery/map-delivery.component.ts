@@ -1,7 +1,8 @@
+import { ToolService } from 'src/app/services/tools.service';
 import { Location } from "../../../../models/Location";
 import { LocationService } from './../../../../services/location.service';
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import {Observable} from 'rxjs';
 import { StateGroup } from "src/app/class/StateGroup";
 import {startWith, map} from 'rxjs/operators';
@@ -25,19 +26,53 @@ export class MapDeliveryComponent implements OnInit {
   stateForm: FormGroup = this._formBuilder.group({
     stateGroup: '',
   });
+
+  form: FormGroup = new FormGroup({
+    durationDelivery: new FormControl(''),
+    latitude: new FormControl(0),
+    longitude: new FormControl(0)
+  });
+
   stateGroups: StateGroup[] = new Array();
 
   stateGroupOptions: Observable<StateGroup[]>;
   locationList: Array<Location>;
   map: mapboxgl.Map;
+  markers = new Array();
 
   constructor(
     private _formBuilder: FormBuilder,
     private locationService: LocationService, 
-    private cookie: CookieService
+    private cookie: CookieService,
+    private toolService: ToolService
   ) { }
 
-  search(){}
+  getLatlnMap(e, markerStyle: string, form: FormGroup, map: mapboxgl.Map, markers: any) {
+    this.toolService.getLatlnMap(e, markerStyle, form, map, markers)
+  }
+
+  search() {
+    this.zoomHere();
+  }
+
+  mapMove(zoom: number) {
+    return new Promise((resolve,reject) => {
+        this.locationList.forEach(loc => {
+            if (loc.name == this.stateForm.value.stateGroup) {
+                this.map.flyTo({
+                    center:[loc.coordinate.lng,loc.coordinate.lat],
+                    zoom:zoom,
+                    essential: true
+                });
+            }
+            resolve("perfect")
+        })
+    });
+  }
+
+  zoomHere(): void {
+    this.mapMove(14);
+  }
 
   stateTemp: StateGroup;
   defineStateGroup(locations:Array<Location>) {
@@ -82,6 +117,7 @@ export class MapDeliveryComponent implements OnInit {
       startWith(''),
       map(value => this._filterGroup(value)),
     );
+    this.map.on('click', (e) => this.getLatlnMap(e, "markerInfo", this.form, this.map, this.markers))
   }
   private _filterGroup(value: string): StateGroup[] {
     if (value) {
