@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { ComponentsModule } from "./backend/components/components.module";
     HttpClientModule,
     NgbModule,
     CoreModule,
+    MatSnackBarModule,
     HomeModule,
     AccountModule,
     DefaultModule,

@@ -31,20 +31,18 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.accountService.login(this.users).subscribe((data: any) => {
-        if(data != null && data.message == null) {
-            this.users = data;
-            this.cookie.set('email', this.users.email);
-            this.cookie.set('password', this.users.password);
-            this.cookie.set('first_name', this.users.first_name);
-            this.cookie.set('last_name', this.users.last_name);
-            this.cookie.set('token', this.users.token);
-            //this.router.navigate(['/']);
-            this.dialogRef.close();
-          } else {
-            this.error = data.message
-          }
-        })   
-      }
+      if(data != null) {
+        this.users = data;
+        this.cookie.set('email', this.users.email);
+        this.cookie.set('password', this.users.password);
+        this.cookie.set('first_name', this.users.first_name);
+        this.cookie.set('last_name', this.users.last_name);
+        this.cookie.set('token', this.users.token);
+        //this.router.navigate(['/']);
+        this.dialogRef.close();
+      } 
+    })   
+  }
       
   submit() {
     this.users.email = this.form.value.email

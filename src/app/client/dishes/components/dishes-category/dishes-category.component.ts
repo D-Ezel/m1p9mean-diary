@@ -1,7 +1,9 @@
+import { LoginComponent } from './../../../account/components/login/login.component';
 import { Dishes } from './../../models/Dishes';
 import { TypeResto } from './../../../resto-ekaly/models/TypeResto';
 import { DishesService } from './../../services/dishes.service';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dishes-category',
@@ -11,7 +13,24 @@ import { Component, OnInit } from '@angular/core';
 export class DishesCategoryComponent implements OnInit {
   listDishCateg: TypeResto[];
 
-  constructor(private dishesService: DishesService) { }
+  constructor(
+    private dishesService: DishesService,
+    public dialog: MatDialog
+  ) { }
+
+  openDialogLogin() {
+    const dialogRef = this.dialog.open(
+    LoginComponent,
+    {
+      height: '70%',
+      width: '500px', 
+      panelClass: 'custom-dialog',
+      backdropClass: 'custom-backDrop'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   searchByDishCateg(dishCateg?:TypeResto) {
     if(!dishCateg) {

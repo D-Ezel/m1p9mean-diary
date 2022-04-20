@@ -26,11 +26,10 @@ export class AccountService {
 }
 
 public isLogged() {
+		console.log(this.cookie.get('token'));
     const headers = {
-        'content-type':'application/json',
-        'Authorization':'Bearer '+ this.cookie.get('token'),
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*'
+			'content-type':'application/json',
+			'Authorization':'Bearer '+ this.cookie.get('token'),
     }
     return this.http.get(this.url + '/isLogged', {'headers': headers});
 }

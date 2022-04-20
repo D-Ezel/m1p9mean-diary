@@ -4,6 +4,8 @@ import { hashAndUpdateAllPassword,
   login,
   hashPassword,
   register} from "../controller/account.controller.js"
+import {verifyToken} from "../middlewares/auth.js"
+
 const app = express();
 
 app.get("/profile", async (req,res) => {
@@ -23,6 +25,12 @@ app.post("/register", function (req,res, next) {
     res.json(account);
   });
 })
+
+app.get("/isLogged", verifyToken, function (req,res, next) {
+  //if(!req.session.cart) console.log(req.session.cart);
+  res.json(req.session.cart);
+});
+
 
 app.post("/login", function (req,res, next) {
 	login(req.body, (error, account) => {

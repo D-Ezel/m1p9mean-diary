@@ -3,7 +3,7 @@
 	<mat-drawer mode="side" position="end" [opened]="sideBarOpen">
 		<app-cart></app-cart>
 		<div class="buy__btn">
-			<button mat-raised-button color="primary">Acheter</button>
+			<button mat-raised-button (click)="buyLink()">Acheter</button>
 		</div>
 	</mat-drawer>
 	<mat-drawer-content>

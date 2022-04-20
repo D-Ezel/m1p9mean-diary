@@ -2,6 +2,9 @@
 @import "../../../../styles/colors.scss";
 @import "../../../../styles/mixins.scss";
 
+input {
+	color:black;
+}
 .login {
 	display: flex;
 	width:100%;
