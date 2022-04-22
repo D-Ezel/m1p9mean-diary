@@ -49,14 +49,12 @@ export class DishesComponent implements OnInit {
 
   buyLink() { 
     this.accountService.isLogged().subscribe((cart: any) => {
-      console.log(cart);
       if(cart.sumQty > 0) {
         this.router.navigate(["/cart/checkout/operators"]);
       } else {
         this.openSnackBar();
       }       
     }, (httpError) => {
-      console.log(httpError)
       this.openDialogLogin();
     })
   }

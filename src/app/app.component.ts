@@ -13,11 +13,5 @@ export class AppComponent implements OnInit{
   constructor(private statusService: StatusService) { }
 
   ngOnInit() {
-    this.statusService
-      .getListingsAndReviews()
-      .subscribe((result: any) => {
-        console.log(result);
-        this.reviewer = result[0].username;
-      });
   }
 }

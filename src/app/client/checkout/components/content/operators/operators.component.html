@@ -3,12 +3,18 @@
 		<mat-card class="card-operator">
 			<div class="card-operator__row">
 				<div class="card-operator__form">
-					<mat-card-title>Ferran</mat-card-title>
-					<mat-card-subtitle>Torres</mat-card-subtitle>
+					<mat-card-title>{{first_name}}</mat-card-title>
+					<mat-card-subtitle>{{last_name}}</mat-card-subtitle>
 					<mat-card-content>
 						<p>
 							<mat-form-field class="titre">
-								<input type="text" matInput placeholder="numéro telephone ex: 034... " formControlName="numberPhone">
+								<mat-label>numéro pour recevoir le code</mat-label>
+								<input type="text" matInput formControlName="phoneToReceiveCode">
+							</mat-form-field>
+						</p>
+						<p>
+							<mat-form-field class="titre">
+								<input type="text" matInput placeholder="numéro téléphone pour payer" formControlName="numberPhone">
 							</mat-form-field>
 						</p>
 						<p>
