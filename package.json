@@ -2,6 +2,9 @@
   "type": "module",
   "name": "e-kaly",
   "version": "0.0.0",
+  "engines":{
+    "node":"16.14.2"
+  },
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
