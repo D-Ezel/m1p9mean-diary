@@ -9,7 +9,6 @@ export class Accounts {
 		public profile: Profile = null,
 		public password: string = null,
 		public created_at: Date = null,
-		public phone: string = null,
 		public token: string = null
 	) {}
 } 

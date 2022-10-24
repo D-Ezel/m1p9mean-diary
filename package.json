@@ -44,7 +44,6 @@
     "mapbox-gl": "^2.7.1",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.9",
-    "nexmo": "^2.9.1",
     "ngx-cookie-service": "^12.0.3",
     "ngx-toastr": "^14.2.2",
     "nodemailer": "^6.7.3",

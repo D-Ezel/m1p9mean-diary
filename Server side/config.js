@@ -9,13 +9,5 @@ const config = {
 		dbname: 'ekaly'
 	}
 };
-
-const nexmo = {
-	apiKey: "e70b5798",
-	apiSecret: "NyjrwLtvYZSWX2p2"
-}
 	
-export {
-	config,
-	nexmo
-} 
+export default config;

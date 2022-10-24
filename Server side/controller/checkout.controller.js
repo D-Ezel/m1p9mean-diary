@@ -6,14 +6,6 @@ import CartItemModel from "../models/cart_item.js";
 import OrderedPaidModel from "../models/ordered_paid.js";
 import TypeCheckoutModel from "../models/type_checkout.js";
 import CodeReceivedOrderedModel from "../models/code_received_ordered.js"
-import Nexmo from 'nexmo';
-import { nexmo } from '../config.js';
-
-const {apiKey, apiSecret} = nexmo
-const nexmoApi = new Nexmo({
-	apiKey:apiKey,
-	apiSecret:apiSecret
-});
 
 const checkoutMap = (req, next) => {
 	const checkoutMap =  new CheckoutMapClass(req.body, req.session.cart);
@@ -21,7 +13,7 @@ const checkoutMap = (req, next) => {
 	ordered.state = 10;
 	const typeCheckout = new TypeCheckoutModel(checkoutMap.type_checkout);
 	typeCheckout.orderedref = ordered._id;
-	saveCheckout(req.session.cart, ordered, typeCheckout, req.body.toNumber, next);
+	saveCheckout(req.session.cart, ordered, typeCheckout, next);
 }
 
 const generatorCodeReceived = () => {
@@ -37,7 +29,7 @@ const generatorCodeReceived = () => {
 	return randStr;
 }
 
-const saveCheckout = (cart, ordered, typeCheckout, toNumber, next) => {
+const saveCheckout = (cart, ordered, typeCheckout, next) => {
 	const lengthCart = Object.keys(cart.items).length;
 	try {
 		mongoose.startSession().then(async (session) => {
@@ -50,6 +42,9 @@ const saveCheckout = (cart, ordered, typeCheckout, toNumber, next) => {
 						if (err) return next(err);
 					})
 				}
+				await typeCheckout.save((err) => {
+					if (err) return next(err);
+				})
 				await ordered.save((err) => {
 					if (err) return next(err);
 					const orderedPaid = new OrderedPaidModel({
@@ -63,20 +58,8 @@ const saveCheckout = (cart, ordered, typeCheckout, toNumber, next) => {
 							orderedref: ordered._id,
 							codeReceivedToValidate: code
 						});
-						typeCheckout.save((err) => {
-							if (err) return next(err);
-							codeReceivedOrdered.save((error) => {
-								if (error) return next(error);
-								nexmoApi.message.sendSms(
-									"+261343152742", "+261"+toNumber, "code de recu livraison:"+code, {type: 'unicode'},
-									(err, responseData) => {
-										if (responseData) {
-											console.log("eto le t mety")
-											console.log(responseData)
-										}
-									}
-								);
-							})
+						codeReceivedOrdered.save((error) => {
+							if (error) return next(error);
 						})
 					})
 				})

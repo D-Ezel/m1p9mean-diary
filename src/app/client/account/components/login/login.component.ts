@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
         this.cookie.set('password', this.users.password);
         this.cookie.set('first_name', this.users.first_name);
         this.cookie.set('last_name', this.users.last_name);
-        this.cookie.set('phone', this.users.phone);
         this.cookie.set('token', this.users.token);
         //this.router.navigate(['/']);
         this.dialogRef.close();
