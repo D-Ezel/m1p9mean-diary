@@ -1,3 +1,4 @@
+import { UnauthorizedComponent } from './core/components/unauthorized/unauthorized.component';
 import { DeliveryComponent } from './client/delivery/delivery.component';
 import { CheckoutComponent } from './client/checkout/checkout.component';
 import { DefaultComponent } from './client/layouts/default/default.component';
@@ -67,6 +68,9 @@ const routes: Routes = [{
       loadChildren: () => import ("./client/delivery/delivery.module").then(m => m.DeliveryModule)
     }
   ]
+}, {
+  path:'unauthorized',
+  component: UnauthorizedComponent
 }];
 
 @NgModule({

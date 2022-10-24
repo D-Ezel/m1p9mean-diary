@@ -10,9 +10,10 @@ import {MatInputModule} from '@angular/material/input';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
-  declarations: [NavbarComponent, PageNotFoundComponent],
+  declarations: [NavbarComponent, PageNotFoundComponent, UnauthorizedComponent],
   imports: [
     CommonModule,
     MatIconModule,
